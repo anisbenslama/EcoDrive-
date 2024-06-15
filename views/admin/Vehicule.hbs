@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicules</title>
+  <link rel="stylesheet" href="/output.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/candidat.css">
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      border-radius: 10px;
+      width: 50%;
+      max-width: 600px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form label {
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+
+    form input,
+    form select {
+      padding: 10px;
+      margin: 5px 0 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    form button {
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    form button:hover {
+      background-color: #45a049;
+    }
+
+    #openModalBtn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #openModalBtn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <img src="images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+            </span>
+            <span class="title">EcoDrive</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="dashboardadmin">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="candidats">
+            <span class="icon">
+              <ion-icon name="accessibility-outline"></ion-icon>
+
+            </span>
+            <span class="title">Candidats</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="cash-outline"></ion-icon>
+            </span>
+            <span class="title">Comptabilité </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="vehicules">
+            <span class="icon">
+              <ion-icon name="car-outline"></ion-icon>
+            </span>
+            <span class="title">Vehicules</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Calendrieradmin">
+            <span class="icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </span>
+            <span class="title">Calendrier</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Instructeurs">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Instricteurs</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="admin">
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">se déconnecter</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+      <div class="search">
+        <label>
+          <input type="text" placeholder="Search ..." id="searchInput">
+          <ion-icon name="search-outline"></ion-icon>
+        </label>
+      </div>
+      <div class="user">
+        <img src="/images/user.png" alt="">
+      </div>
+    </div>
+
+    <!-- Nouveaux Vehicules -->
+    <div class="nouvcandidat">
+      <div class="cardHeader">
+        <h2>Vehicules</h2>
+        <button id="openModalBtn">Ajouter Véhicule</button>
+      </div>
+      <table id="vehiculesTable">
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)"> Id <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(1)"> Marque <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(2)"> Modèle <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(3)"> Disponibilité <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(4)"> N°Serie <span class="icon-arrow">&UpArrow;</span></th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>PEUGEOT</td>
+            <td>PEUGEOT 308</td>
+            <td>
+              <p class="status delivered">Actif</p>
+            </td>
+            <td><strong>190 TUN 1266</strong></td>
+            <td onclick="events"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>RENAULT</td>
+            <td>Renault Symbol</td>
+            <td>
+              <p class="status cancelled">Inactif</p>
+            </td>
+            <td><strong>178 TUN 4236</strong></td>
+            <td onclick="events"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>PEUGEOT</td>
+            <td>PEUGEOT 308</td>
+            <td>
+              <p class="status pending">En Panne</p>
+            </td>
+            <td><strong>222 TUN 1066</strong></td>
+            <td onclick="events"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>FIAT</td>
+            <td>Fiat Panda</td>
+            <td>
+              <p class="status delivered">Actif</p>
+            </td>
+            <td><strong>241 TUN 950</strong></td>
+            <td onclick="events"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="vehiculeModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <form id="vehiculeForm">
+        <label for="vehiculeMarque">Marque:</label>
+        <input type="text" id="vehiculeMarque" name="vehiculeMarque" required>
+        
+        <label for="vehiculeModele">Modèle:</label>
+        <input type="text" id="vehiculeModele" name="vehiculeModele" required>
+        
+        <label for="vehiculeDisponibilite">Disponibilité:</label>
+        <select id="vehiculeDisponibilite" name="vehiculeDisponibilite" required>
+          <option value="Actif">Actif</option>
+          <option value="Inactif">Inactif</option>
+          <option value="En Panne">En Panne</option>
+        </select>
+        
+        <label for="vehiculeNumeroSerie">N°Serie:</label>
+        <input type="text" id="vehiculeNumeroSerie" name="vehiculeNumeroSerie" required>
+        
+        <button type="submit">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- script -->
+  <script src="/js/admin.js"></script>
+  <!-- ionic icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+    // Get modal element
+    var modal = document.getElementById("vehiculeModal");
+    var btn = document.getElementById("openModalBtn");
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Ajouter event listener for form submission
+    document.getElementById("vehiculeForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      // Get form values
+      var marque = document.getElementById("vehiculeMarque").value;
+      var modele = document.getElementById("vehiculeModele").value;
+      var disponibilite = document.getElementById("vehiculeDisponibilite").value;
+      var numeroSerie = document.getElementById("vehiculeNumeroSerie").value;
+      
+      // Creation nouveay row and cells
+      var table = document.getElementById("vehiculesTable").getElementsByTagName("tbody")[0];
+      var newRow = table.insertRow();
+      
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+      var cell4 = newRow.insertCell(3);
+      var cell5 = newRow.insertCell(4);
+      var cell6 = newRow.insertCell(5);
+      
+      // Ajouter data to cells
+      cell1.innerHTML = table.rows.length;
+      cell2.innerHTML = marque;
+      cell3.innerHTML = modele;
+      cell4.innerHTML = '<p class="status ' + (disponibilite === "Actif" ? 'delivered' : (disponibilite === "Inactif" ? 'cancelled' : 'pending')) + '">' + disponibilite + '</p>';
+      cell5.innerHTML = '<strong>' + numeroSerie + '</strong>';
+      cell6.innerHTML = '<ion-icon name="trash-outline"></ion-icon>';
+      
+      // Close the modal
+      modal.style.display = "none";
+      
+      // Reset the form
+      document.getElementById("vehiculeForm").reset();
+    });
+  </script>
+</body>
+
+</html>

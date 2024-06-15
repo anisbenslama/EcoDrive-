@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progression</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/css/dashboardcandidat.css">
+    <link rel="shortcut icon" href="images/ecodrive  Logo.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="/">
+                        <span class="icon">
+                            <img src="images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+                        </span>
+                        <span class="title">EcoDrive</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="progression">
+                        <span class="icon">
+                            <ion-icon name="trending-up-outline"></ion-icon>
+                        </span>
+                        <span class="title">Progression</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Paiement">
+                        <span class="icon">
+                            <ion-icon name="cash-outline"></ion-icon>
+                        </span>
+                        <span class="title">Paiement </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="calendrier">
+                        <span class="icon">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </span>
+                        <span class="title">Calendrier</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Main -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search ...">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+            <div class="user" id="userDropdown">
+                <img src="/images/user.png" alt="">
+                <div class="dropdown-content">
+                    <a href="profil"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
+                    <a href="setting"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+                    <a href="connexion"><ion-icon name="log-out-outline"></ion-icon>déconnection</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progression Section -->
+        <div class="progression-section">
+            <h2 style="text-align: center;">Progression du Candidat</h2>
+            <div class="chart-container">
+                <canvas id="codeProgressChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="conduiteProgressChart"></canvas>
+            </div>
+        </div>
+        <br>
+        <br>
+
+        <footer>
+            <div class="footer-content">
+                <p>Copyright © 2024 EcoDrive. Tous droits réservés.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/admin.js"></script>
+    <script src="/js/candidat.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Progression Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            var codeProgressValue = [0, 10, 20, 30, 40, 50, 60]; // Exemple de données de progression pour le code
+            var conduiteProgressValue = [0, 20, 40, 60, 80, 100]; // Exemple de données de progression pour la conduite
+
+            // Chart for Code Progress
+            var ctxCode = document.getElementById('codeProgressChart').getContext('2d');
+            var codeProgressChart = new Chart(ctxCode, {
+                type: 'line',
+                data: {
+                    labels: ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4', 'Semaine 5', 'Semaine 6'],
+                    datasets: [{
+                        label: 'Leçon de Code',
+                        data: codeProgressValue,
+                        borderColor: '#4CAF50',
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Progression de la Leçon de Code'
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+
+            // Chart for Conduite Progress
+            var ctxConduite = document.getElementById('conduiteProgressChart').getContext('2d');
+            var conduiteProgressChart = new Chart(ctxConduite, {
+                type: 'line',
+                data: {
+                    labels: ['Semaine 1', 'Semaine 2', 'Semaine 3', 'Semaine 4', 'Semaine 5', 'Semaine 6'],
+                    datasets: [{
+                        label: 'Leçon de Conduite',
+                        data: conduiteProgressValue,
+                        borderColor: '#2196F3',
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Progression de la Leçon de Conduite'
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+/* Exemple de style pour progression-table */
+.progression-table {
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.progression-table h2 {
+  text-align: center;
+  color: #333;
+}
+
+.progression-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.progression-table th, .progression-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.progression-table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.progression-table form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.progression-table form input, .progression-table form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.progression-table form button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.progression-table form button:hover {
+  background-color: #45a049;
+}
+
+/* CSS de calendrier instructeur */
+.calendar-container {
+  margin: 20px;
+}
+
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* css pour l'interface et le footer */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-content {
+  text-align: center;
+  padding: 10px;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+

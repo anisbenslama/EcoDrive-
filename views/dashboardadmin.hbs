@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="shortcut icon" href="/images/ecodrive  Logo.png" type="image/x-icon">
+  <title>Dashboard Admin</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('/api/candidates/count')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('candidateCount').innerText = data.count;
+        })
+        .catch(error => console.error('Error fetching candidate count:', error));
+
+      fetch('/api/candidates/new')
+        .then(response => response.json())
+        .then(candidates => {
+          const candidatesContainer = document.querySelector('.nouvcandidat tbody');
+          candidatesContainer.innerHTML = ''; // Clear previous content
+
+          candidates.forEach(candidate => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td width="60px">
+                <div class="imgBx">
+                  <img src="/images/user.png" alt="">
+                </div>
+              </td>
+              <td>
+                <h4>${candidate.prenom} <span>${candidate.nom}</span></h4>
+              </td>
+            `;
+            candidatesContainer.appendChild(row);
+          });
+        })
+        .catch(error => console.error('Error fetching new candidates:', error));
+    });
+  </script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="home">
+            <span class="icon">
+              <img src="/images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+            </span>
+            <span class="title">EcoDrive</span>
+          </a>
+        </li>
+        <li>
+          <a href="dashboardadmin">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="candidats">
+            <span class="icon">
+              <ion-icon name="accessibility-outline"></ion-icon>
+            </span>
+            <span class="title">Candidats</span>
+          </a>
+        </li>
+        <li>
+          <a href="Comptabilite">
+            <span class="icon">
+              <ion-icon name="cash-outline"></ion-icon>
+            </span>
+            <span class="title">Comptabilité</span>
+          </a>
+        </li>
+        <li>
+          <a href="vehicules">
+            <span class="icon">
+              <ion-icon name="car-outline"></ion-icon>
+            </span>
+            <span class="title">Vehicules</span>
+          </a>
+        </li>
+        <li>
+          <a href="Calendrieradmin">
+            <span class="icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </span>
+            <span class="title">Calendrier</span>
+          </a>
+        </li>
+        <li>
+          <a href="Instructeurs">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Instructeurs</span>
+          </a>
+        </li>
+        <li>
+          <a href="admin">
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">Se déconnecter</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+      <div class="search">
+        <label>
+          <input type="text" placeholder="Search ...">
+          <ion-icon name="search-outline"></ion-icon>
+        </label>
+      </div>
+      <div class="user">
+        <img src="/images/user.png" alt="">
+      </div>
+    </div>
+
+    <div class="cardBox">
+      <div class="card">
+        <div>
+          <div class="numbers">1,500</div>
+          <div class="cardName">Daily Views</div>
+        </div>
+        <div class="iconBx">
+          <ion-icon name="eye-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="numbers" id="candidateCount">0</div>
+          <div class="cardName">Candidats</div>
+        </div>
+        <div class="iconBx">
+          <ion-icon name="people-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="numbers">1,200</div>
+          <div class="cardName">Dépenses</div>
+        </div>
+        <div class="iconBx">
+          <ion-icon name="cash-outline"></ion-icon>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="numbers">2880 TND</div>
+          <div class="cardName">Revenus</div>
+        </div>
+        <div class="iconBx">
+          <ion-icon name="cash-outline"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <!-- Details paiements dashboard Admin -->
+    <div class="details">
+      <div class="listpaiement">
+        <div class="cardHeader">
+          <h2>Paiement récent</h2>
+          <a href="#" class="btn">Voir tout</a>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <td>Date</td>
+              <td>Effectué Par :</td>
+              <td>Candidat</td>
+              <td>Montant</td>
+              <td>Status</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>20/04/2024</td>
+              <td>Admin</td>
+              <td>Ahmed Benslama</td>
+              <td>660TND</td>
+              <td><span class="statusParTranche">Par Tranche</span></td>
+            </tr>
+            <tr>
+              <td>24/04/2024</td>
+              <td>Admin</td>
+              <td>Sami Benour</td>
+              <td>330TND</td>
+              <td><span class="statusPayé">Payé</span></td>
+            </tr>
+            <tr>
+              <td>28/04/2024</td>
+              <td>Admin</td>
+              <td>Ayhem Heni</td>
+              <td>900TND</td>
+              <td><span class="statusEnEspéce">Espéce</span></td>
+            </tr>
+            <tr>
+              <td>03/05/2024</td>
+              <td>Admin</td>
+              <td>Khaled Youssfi</td>
+              <td>660TND</td>
+              <td><span class="statusPayé">Payé</span></td>
+            </tr>
+            <tr>
+              <td>15/05/2024</td>
+              <td>Admin</td>
+              <td>Najib Khatab</td>
+              <td>330TND</td>
+              <td><span class="statusEnEspéce">Espéce</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Nouveaux Candidats -->
+      <div class="nouvcandidat">
+        <div class="cardHeader">
+          <h2>Nouveaux candidats</h2>
+          <a href="candidats" class="btn">Voir tout</a>
+        </div>
+        <table>
+          <tbody>
+            <!-- Les nouveaux candidats seront affichés ici -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- script -->
+  <script src="/js/admin.js"></script>
+
+  <!-- ionic icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

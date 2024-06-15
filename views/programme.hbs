@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../public/css/index.css">
+  <link rel="shortcut icon" href="images/ecodrive  Logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="../views/output.css">
+  <title>Actualités</title>
+</head>
+
+<body>
+  <!-- Navbar Section-->
+  <nav class="bg-white  fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="/Home" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+        <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EcoDrive</span>
+      </a>
+      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button type="button">
+          <a href="/connexion"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Espace
+            Candidat </a>
+        </button>
+        <button data-collapse-toggle="navbar-sticky" type="button"
+          class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-sticky" aria-expanded="false">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M1 1h15M1 7h15M1 13h15" />
+          </svg>
+        </button>
+      </div>
+      <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+        <ul
+          class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <li>
+            <a href="/Home"
+              class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500"
+              aria-current="page">Accueil</a>
+          </li>
+          <li>
+            <a href="/about"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+              Qui sommes-nous ?</a>
+          </li>
+          <li>
+            <a href="/forfait"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Nos
+              Forfaits </a>
+          </li>
+          <li>
+            <a href="/programme"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Actualités
+            </a>
+          </li>
+          <li>
+            <a href="/contact"
+              class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <!-- component -->
+  <!--
+  Welcome to Tailwind Play, the official Tailwind CSS playground!
+
+  Everything here works just like it does when you're running Tailwind locally
+  with a real build pipeline. You can customize your config file, use features
+  like `@apply`, or even add third-party plugins.
+
+  Feel free to play with this example if you're just learning, or trash it and
+  start from scratch if you know enough to be dangerous. Have fun!
+-->
+  <div class="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+    <div class="m-10 flex flex-col items-center mx-auto max-w-screen-lg">
+      <div class="header flex w-full justify-center">
+        <h2
+          class="font-black pb-10 mb-20 text-5xl text-blue-900 before:block before:absolute before:bg-gray-400  relative before:w-1/3 before:h-1 before:bottom-0 before:left-1/3">
+          Articles</h2>
+      </div>
+      <div class="grid w-full gap-10 grid-cols-3">
+        <div class="bg-white w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl">
+          <div class="  p-6">
+
+            <div class="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-blue-900">
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                14 March, 2024
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+                </svg>
+              </span>
+            </div>
+            <h3 class="mb-4 font-semibold  text-2xl"><a href=""
+                class="transition-all text-gray-500 hover:text-blue-600">Obtention du permis de conduire : Les moniteurs
+                d'auto-école protestent</a></h3>
+            <p class="text-black text-sm mb-0">
+              En raison des nouvelles mesures prises concernant les conditions d'obtention du permis de conduire, les
+              agents de l'Organisation nationale des établissements de la Formation de la Conduite et de la Sécurité
+              Routière se sont rassemblés
+            </p>
+          </div>
+          <div class="mt-auto">
+            <img src="images/Permis-protestation.jpg" alt="" class="w-full h-48 object-cover">
+          </div>
+        </div>
+        <div class="bg-white w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl">
+          <div class="  p-6">
+
+            <div class="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-blue-900">
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                14 March, 2024
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+                </svg>
+
+              </span>
+            </div>
+            <h3 class="mb-4 font-semibold  text-2xl"><a href=""
+                class="transition-all text-gray-500 hover:text-blue-600">Permis de conduire : Une nouvelle mesure
+                annoncée</a></h3>
+            <p class="text-black text-sm mb-0">
+              Les opérations d’inscription aux différentes épreuves théoriques et pratiques pour l’obtention du permis
+              de conduire seront réalisées uniquement par les auto-écoles, et ce a annoncé l’Agence Technique des
+              Transports Terrestres (ATTT), dans un communiqué publié vendredi.
+            </p>
+          </div>
+          <div class="mt-auto">
+            <img src="images/photos-4.jpg" alt="" class="w-full h-48 object-cover">
+          </div>
+        </div>
+        <div class="bg-white w-full rounded-lg shadow-md flex flex-col transition-all overflow-hidden hover:shadow-2xl">
+          <div class="  p-6">
+
+            <div class="pb-3 mb-4 border-b border-stone-200 text-xs font-medium flex justify-between text-blue-900">
+              <span class="flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                25 Avril, 2024
+              </span>
+              <span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+                </svg>
+
+              </span>
+            </div>
+            <h3 class="mb-4 font-semibold  text-2xl"><a href=""
+                class="transition-all text-gray-500 hover:text-blue-600">Combien de temps dure l’examen du permis ?</a>
+            </h3>
+            <p class="text-black text-sm mb-0">
+              L’examen du permis de conduire représente un moment crucial pour tous les candidats qui aspirent à obtenir
+              leur précieux sésame pour circuler sur les routes en toute autonomie. Chez Auto-école EcoDrive, nous
+              sommes conscients de l’importance capitale de cette étape et souhaitons vous accompagner dans votre
+              réussite.
+            </p>
+          </div>
+          <div class="mt-auto">
+            <img src="images/examen-permis.jpeg" alt="" class="w-full h-48 object-cover">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <!-- Footer Section-->
+  <footer class="footer">
+    <div class="waves size-5">
+      <div class="wave" id="wave1"></div>
+      <div class="wave" id="wave2"></div>
+      <div class="wave" id="wave3"></div>
+
+    </div>
+    <ul class="social-icon">
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-facebook"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a></li>
+      <li class="social-icon__item"><a class="social-icon__link" href="#">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a></li>
+    </ul>
+    <ul class="menu">
+      <li class="menu__item"><a class="menu__link" href="/Home">Accueil</a></li>
+      <li class="menu__item"><a class="menu__link" href="/about">Qui sommes-nous ?</a></li>
+      <li class="menu__item"><a class="menu__link" href="/forfait">Nos Forfaits</a></li>
+      <li class="menu__item"><a class="menu__link" href="/programme">Actualités</a></li>
+      <li class="menu__item"><a class="menu__link" href="/contact">Contact</a></li>
+
+    </ul>
+    <p>&copy;2024 EcoDrive | All Rights Reserved</p>
+  </footer>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </section>
+</body>
+
+</html>

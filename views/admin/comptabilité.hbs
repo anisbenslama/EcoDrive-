@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comptabilité</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/comptabilite.css">
+  <link rel="shortcut icon" href="../public/images/ecodrive  Logo.png" type="image/x-icon">
+</head>
+
+<body>
+  
+  <!-- Navigation -->
+  <!-- Navigation -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="home">
+            <span class="icon">
+              <img src="images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+            </span>
+            <span class="title">EcoDrive</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="dashboardadmin">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="candidats">
+            <span class="icon">
+              <ion-icon name="accessibility-outline"></ion-icon>
+
+            </span>
+            <span class="title">Candidats</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Comptabilite">
+            <span class="icon">
+              <ion-icon name="cash-outline"></ion-icon>
+            </span>
+            <span class="title">Comptabilité </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="vehicules">
+            <span class="icon">
+              <ion-icon name="car-outline"></ion-icon>
+            </span>
+            <span class="title">Vehicules</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Calendrieradmin">
+            <span class="icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </span>
+            <span class="title">Calendrier</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Instructeurs">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Instricteurs</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="admin">
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">se déconnecter</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+      <div class="search">
+        <label>
+          <input type="text" placeholder="Search ...">
+          <ion-icon name="search-outline"></ion-icon>
+        </label>
+      </div>
+      <div class="user" id="userDropdown">
+        <img src="/images/user.png" alt="">
+        <div class="dropdown-content">
+          <a href="#"><ion-icon name="person-circle-outline"></ion-icon> Profile</a>
+          <a href="#"><ion-icon name="settings-outline"></ion-icon> Settings</a>
+          <a href="admin"><ion-icon name="log-out-outline"></ion-icon>déconnection</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tableau Comptabilité -->
+    <div class="comptabilite">
+      <div class="cardHeader">
+        <h2>Comptabilité</h2>
+      </div>
+      <br>
+      <table id="comptabiliteTable">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Effectué Par</th>
+            <th>Candidat</th>
+            <th>Montant</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Contenu dynamique ajouté par JavaScript -->
+        </tbody>
+      </table>
+      <form id="addTransactionForm">
+        <input type="date" name="date" required>
+        <input type="text" name="effectuePar" placeholder="Effectué Par" required>
+        <input type="text" name="candidat" placeholder="Candidat" required>
+        <input type="number" name="montant" placeholder="Montant" required>
+        <select name="status" required>
+          <option value="Paid">Payé</option>
+          <option value="Pending">Par Tranche</option>
+          <option value="Failed">Espéce</option>
+        </select>
+        <button type="submit">Ajouter Transaction</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- script -->
+  <script src="/js/admin.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const tableBody = document.querySelector('#comptabiliteTable tbody');
+
+  // Function to load transactions from localStorage
+  const loadTransactions = () => {
+    const transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    transactions.forEach((transaction, index) => addTransactionToTable(transaction, index));
+  };
+
+  // Function to save transactions to localStorage
+  const saveTransactions = (transactions) => {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+  };
+
+  // Function to fetch transactions
+  const fetchTransactions = async () => {
+    // Add code to fetch data from your backend if necessary
+  };
+
+  // Function to map status values to descriptions
+  const getStatusDescription = (status) => {
+    switch (status) {
+      case 'Paid':
+        return 'Payé';
+      case 'Pending':
+        return 'Par Tranche';
+      case 'Failed':
+        return 'Espéce';
+      default:
+        return status;
+    }
+  };
+
+  // Function to add transaction to the table
+  const addTransactionToTable = (transaction, index) => {
+    const statusDescription = getStatusDescription(transaction.status);
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>${transaction.date}</td>
+      <td>${transaction.effectuePar}</td>
+      <td>${transaction.candidat}</td>
+      <td>${transaction.montant} TND</td>
+      <td>${statusDescription}</td>
+      <td><button class="delete-btn" data-index="${index}">Supprimer</button></td>
+    `;
+    tableBody.appendChild(row);
+  };
+
+  // Function to delete transaction from the table and localStorage
+  const deleteTransaction = (index) => {
+    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    transactions.splice(index, 1);
+    saveTransactions(transactions);
+    loadTable(); // Reload the table after deletion
+  };
+
+  // Load existing transactions on page load
+  const loadTable = () => {
+    tableBody.innerHTML = ''; // Clear existing table contents
+    loadTransactions(); // Load transactions from localStorage
+  };
+  loadTable();
+
+  // Add transaction
+  const addTransactionForm = document.getElementById('addTransactionForm');
+  addTransactionForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(addTransactionForm);
+    const formDataObj = {};
+    formData.forEach((value, key) => (formDataObj[key] = value));
+
+    // Get existing transactions from localStorage, add the new one, and save it back
+    let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+    transactions.push(formDataObj);
+    saveTransactions(transactions);
+
+    // Reload the table to include the new transaction
+    loadTable();
+
+    // Clear the form fields after adding the transaction
+    addTransactionForm.reset();
+  });
+
+  // Event delegation for delete buttons
+  tableBody.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-btn')) {
+      const index = e.target.getAttribute('data-index');
+      deleteTransaction(index);
+    }
+  });
+});
+  </script>
+
+</body>
+
+</html>

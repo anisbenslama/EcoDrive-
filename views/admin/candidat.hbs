@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candidats</title>
+  <link rel="stylesheet" href="/output.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/candidat.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+              <img src="images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+            </span>
+            <span class="title">EcoDrive</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="dashboardadmin">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="candidats">
+            <span class="icon">
+              <ion-icon name="accessibility-outline"></ion-icon>
+
+            </span>
+            <span class="title">Candidats</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="comptabilite">
+            <span class="icon">
+              <ion-icon name="cash-outline"></ion-icon>
+            </span>
+            <span class="title">Comptabilité </span>
+          </a>
+        </li>
+
+        <li>
+          <a href="vehicules">
+            <span class="icon">
+              <ion-icon name="car-outline"></ion-icon>
+            </span>
+            <span class="title">Vehicules</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Calendrieradmin">
+            <span class="icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </span>
+            <span class="title">Calendrier</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="Instructeurs">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Instricteurs</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="admin">
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">se déconnecter</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+      <div class="search">
+        <label>
+          <input type="text" placeholder="Search ..." id="searchInput">
+          <ion-icon name="search-outline"></ion-icon>
+        </label>
+      </div>
+      <div class="user">
+        <img src="/images/user.png" alt="">
+      </div>
+    </div>
+
+
+    <!-- Nouveaux Candidats -->
+
+    <div class="nouvcandidat">
+      <div class="cardHeader">
+        <h2>Nouveaux candidats</h2>
+      </div>
+      <br>
+      <table id="candidatTable">
+
+        <thead>
+          <tr>
+            <th onclick="sortTable(0)"> Id <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(1)"> Candidat <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(2)"> Type/Catégorie <span class="icon-arrow">&UpArrow;</span></th>
+            <th onclick="sortTable(3)"> Etat <span class="icon-arrow">&UpArrow;</span></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td> 1 </td>
+            <td> <img src="/images/user.png" alt="">benslama samar</td>
+            <td>Conduite B </td>
+            <td>
+              <p class="status delivered">Actif</p>
+            </td>
+            <td onclick="deleteCandidate(${candidat.id})"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td> 2 </td>
+            <td><img src="/images/user.png" alt=""> benslama anis </td>
+            <td> Code A1, A2 </td>
+            <td>
+              <p class="status cancelled">Inactive</p>
+            </td>
+            <td onclick="deleteCandidate(${candidat.id})"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td> 3</td>
+            <td><img src="/images/user.png" alt=""> degachi haifa </td>
+            <td> Conduite B </td>
+            <td>
+              <p class="status pending">Away</p>
+            </td>
+            <td onclick="deleteCandidate(${candidat.id})"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td> 4</td>
+            <td><img src="/images/user.png" alt=""> hilali ahmed </td>
+            <td> Conduite C, C1 </td>
+            <td>
+              <p class="status delivered">Actif</p>
+            </td>
+            <td onclick="deleteCandidate(${candidat.id})"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td> 5</td>
+            <td><img src="/images/user.png" alt=""> jendoubi khalil</td>
+            <td> Code A1 </td>
+            <td>
+              <p class="status pending">Away</p>
+            </td>
+            <td onclick="deleteCandidate(${candidat.id})"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+          <tr>
+            <td> 6</td>
+            <td><img src="/images/user.png" alt=""> Ellay areej </td>
+            <td> Conduite C </td>
+            <td>
+              <p class="status cancelled">Inactive</p>
+            </td>
+            <td onclick="deleteCandidate(${candidat.id})"><ion-icon name="trash-outline"></ion-icon></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+  <!-- script -->
+  <script src="/js/admin.js"></script>
+  <!-- ionic icons -->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+$(document).ready(() => {
+  // Récupérer les données des candidats depuis le serveur
+  $.get('/candidats', (data) => {
+    // Boucler à travers les données et les afficher dans le tableau
+    data.forEach((candidat) => {
+      $('#candidatTable tbody').append(`
+        <tr>
+          <td>${candidat.id}</td>
+          <td>${candidat.prenom} ${candidat.nom}</td>
+          <td>Type/Catégorie</td>
+          <td>État</td>
+        </tr>
+      `);
+    });
+  });
+});
+</script>
+
+<script>
+  // Fonction pour supprimer un candidat
+function deleteCandidate(id) {
+  // Supprimer la ligne correspondante du tableau
+  $(`#candidatTable tbody tr[data-id="${id}"]`).remove();
+  
+  // Envoyer une requête AJAX pour supprimer le candidat de la base de données
+  $.ajax({
+    url: `/candidats/${id}`,
+    type: 'DELETE',
+    success: function(response) {
+      console.log('Candidat supprimé de la base de données');
+    },
+    error: function(err) {
+      console.error('Erreur lors de la suppression du candidat :', err);
+    }
+  });
+}
+
+</script>
+</body>
+
+</html>

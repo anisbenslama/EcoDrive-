@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progression Instricteur</title>
+  <link rel="stylesheet" href="/output.css">
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="stylesheet" href="/css/candidat.css">
+  <link rel="stylesheet" href="/css/instructeur.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <div class="container">
+    <div class="navigation">
+      <ul>
+        <li>
+          <a href="/Home">
+            <span class="icon">
+              <img src="images/ecodrive  Logo.png" class="h-16" alt="EcoDrive Logo">
+            </span>
+            <span class="title">EcoDrive</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="dashboardInstricteur">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="calendrierInstricteur">
+            <span class="icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </span>
+            <span class="title">Calendrier</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="progressionInstricteur">
+            <span class="icon">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </span>
+            <span class="title">Progression</span>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="toggle">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+      <div class="search">
+        <label>
+          <input type="text" placeholder="Search ..." id="searchInput">
+          <ion-icon name="search-outline"></ion-icon>
+        </label>
+      </div>
+      <div class="user">
+        <img src="/images/user.png" alt="">
+      </div>
+    </div>
+
+    <!-- Tableau de progression -->
+    <div class="progression-table">
+      <h2>Progression des Candidats</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Leçon de Code</th>
+            <th>Leçon de Conduite</th>
+            <th>Commentaires</th>
+          </tr>
+        </thead>
+        <tbody id="progressionBody">
+          <!-- Les données des candidats seront insérées ici -->
+        </tbody>
+      </table>
+      <form id="progressionForm">
+        <h3>Ajouter un candidat</h3>
+        <input type="text" id="nom" placeholder="Nom" required>
+        <input type="text" id="prenom" placeholder="Prénom" required>
+        <input type="number" id="code" placeholder="Leçon de Code" required>
+        <input type="number" id="conduite" placeholder="Leçon de Conduite" required>
+        <textarea id="commentaires" placeholder="Commentaires"></textarea>
+        <button type="button" onclick="ajouterCandidat()">Ajouter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/calendar.js"></script>
+  <script src="/js/admin.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script>
+    // Charger les données depuis localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+      const candidats = JSON.parse(localStorage.getItem('candidats')) || [];
+      candidats.forEach(candidat => ajouterLigne(candidat));
+    });
+
+    function ajouterCandidat() {
+      // Récupérer les valeurs du formulaire
+      const nom = document.getElementById('nom').value;
+      const prenom = document.getElementById('prenom').value;
+      const code = document.getElementById('code').value;
+      const conduite = document.getElementById('conduite').value;
+      const commentaires = document.getElementById('commentaires').value;
+
+      const candidat = { nom, prenom, code, conduite, commentaires };
+
+      // Ajouter la nouvelle ligne au tableau
+      ajouterLigne(candidat);
+
+      // Sauvegarder les données dans localStorage
+      const candidats = JSON.parse(localStorage.getItem('candidats')) || [];
+      candidats.push(candidat);
+      localStorage.setItem('candidats', JSON.stringify(candidats));
+
+      // Réinitialiser le formulaire
+      document.getElementById('progressionForm').reset();
+    }
+
+    function ajouterLigne(candidat) {
+      // Créer une nouvelle ligne de tableau
+      const nouvelleLigne = `
+        <tr>
+          <td>${candidat.nom}</td>
+          <td>${candidat.prenom}</td>
+          <td>${candidat.code}</td>
+          <td>${candidat.conduite}</td>
+          <td>${candidat.commentaires}</td>
+        </tr>
+      `;
+
+      // Ajouter la nouvelle ligne au corps du tableau
+      document.getElementById('progressionBody').insertAdjacentHTML('beforeend', nouvelleLigne);
+    }
+  </script>
+</body>
+</html>

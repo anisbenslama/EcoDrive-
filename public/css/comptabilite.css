@@ -1,0 +1,79 @@
+/* Styles for Comptabilité Section */
+.comptabilite {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comptabilite .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comptabilite table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.comptabilite table th, .comptabilite table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.comptabilite table th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+.comptabilite table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.comptabilite table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+#addTransactionForm {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#addTransactionForm input, #addTransactionForm select, #addTransactionForm button {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#addTransactionForm button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#addTransactionForm button:hover {
+  background-color: #45a049;
+}
+/* Status Styles */
+.status-paid {
+  color: green;
+  font-weight: bold;
+}
+
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+
+.status-failed {
+  color: red;
+  font-weight: bold;
+}
